@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-6"><h4>Locker Types</h4></div>
+  <div class="col-md-6">
+    <%= link_to 'Add New Locker Type', new_locker_type_path, class: 'btn btn-default pull-right' %>
+  </div>
+</div>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Locker type</th>
+      <th>Yearly rent</th>
+      <th>Number of free visits</th>
+      <th>Extra visit charges</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locker_types.each do |locker_type| %>
+      <tr>
+        <td><%= locker_type.locker_type %></td>
+        <td><%= locker_type.yearly_rent %></td>
+        <td><%= locker_type.number_of_free_visits %></td>
+        <td><%= locker_type.extra_visit_charges %></td>
+        <td><%= link_to 'Edit', edit_locker_type_path(locker_type) %></td>
+        <td><%= link_to 'Destroy', locker_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<hr>

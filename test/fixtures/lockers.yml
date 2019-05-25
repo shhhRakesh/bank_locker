@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  locker_type: one
+  locker_code: MyString
+  locker_name: MyString
+  bank_branch: one
+
+two:
+  locker_type: two
+  locker_code: MyString
+  locker_name: MyString
+  bank_branch: two

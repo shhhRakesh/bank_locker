@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Locker type:</strong>
+  <%= @locker_type.locker_type %>
+</p>
+
+<p>
+  <strong>Yearly rent:</strong>
+  <%= @locker_type.yearly_rent %>
+</p>
+
+<p>
+  <strong>Number of free visits:</strong>
+  <%= @locker_type.number_of_free_visits %>
+</p>
+
+<p>
+  <strong>Extra visit charges:</strong>
+  <%= @locker_type.extra_visit_charges %>
+</p>
+
+<%= link_to 'Edit', edit_locker_type_path(@locker_type) %> |
+<%= link_to 'Back', locker_types_path %>

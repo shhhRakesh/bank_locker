@@ -1,0 +1,17 @@
+<p>
+  <strong>Name:</strong>
+  <%= @manager.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @manager.email %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @manager.mobile %>
+</p>
+
+<%= link_to 'Edit', edit_manager_path(@manager) %> |
+<%= link_to 'Back', managers_path %>

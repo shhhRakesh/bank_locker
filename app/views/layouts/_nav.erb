@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><strong>CBI</strong></a>
+    </div>
+    <div class="container">
+	    <ul class="nav navbar-nav">
+	      <li><a href="<%= root_path %>" class="<%= current_class?(root_path)%>">Home</a></li>
+	      <li class="<%= current_class?(managers_path)%>"><a href="<%= managers_path %>">Managers</a></li>
+	      <li class="<%= current_class?(bank_branches_path)%>"><a href="<%= bank_branches_path%>">Bank Branches</a></li>
+	      <li class="<%= current_class?(locker_types_path)%>"><a href="<%= locker_types_path %>">Locker Types</a></li>
+	      <li class="<%= current_class?(lockers_path)%>"><a href="<%= lockers_path %>">Lockers</a></li>
+	    </ul>
+	    <ul class="nav navbar-nav pull-right">
+	      <li><a href="#">Rakesh Sharma</a></li>
+	      <li><a href="#">Notifications</a></li>
+	      <li><a href="#">Sign Out</a></li>
+	    </ul>
+  </div>
+  </div>
+</nav>

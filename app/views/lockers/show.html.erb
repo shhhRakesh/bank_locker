@@ -1,0 +1,22 @@
+<p>
+  <strong>Locker type:</strong>
+  <%= link_to @locker.locker_type.locker_type, locker_type_path(@locker.locker_type) %>
+</p>
+
+<p>
+  <strong>Locker code:</strong>
+  <%= @locker.locker_code %>
+</p>
+
+<p>
+  <strong>Locker name:</strong>
+  <%= @locker.locker_name %>
+</p>
+
+<p>
+  <strong>Bank branch:</strong>
+  <%= link_to @locker.bank_branch.name, bank_branch_path(@locker.bank_branch)%>
+</p>
+
+<%= link_to 'Edit', edit_locker_path(@locker) %> |
+<%= link_to 'Back', lockers_path %>

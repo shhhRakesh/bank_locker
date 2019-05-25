@@ -1,0 +1,37 @@
+<%= form_with(model: locker_type, local: true) do |form| %>
+  <% if locker_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(locker_type.errors.count, "error") %> prohibited this locker_type from being saved:</h2>
+
+      <ul>
+      <% locker_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :locker_type %>
+    <%= form.text_field :locker_type, id: :locker_type_locker_type, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :yearly_rent %>
+    <%= form.number_field :yearly_rent, id: :locker_type_yearly_rent, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :number_of_free_visits %>
+    <%= form.number_field :number_of_free_visits, id: :locker_type_number_of_free_visits, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :extra_visit_charges %>
+    <%= form.number_field :extra_visit_charges, id: :locker_type_extra_visit_charges, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

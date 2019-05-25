@@ -1,0 +1,28 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @bank_branch.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @bank_branch.address %>
+</p>
+
+<p>
+  <strong>Ifsc code:</strong>
+  <%= @bank_branch.ifsc_code %>
+</p>
+
+<p>
+  <strong>Micr code:</strong>
+  <%= @bank_branch.micr_code %>
+</p>
+
+<p>
+  <strong>Manager:</strong>
+  <%= link_to @bank_branch.manager.name, manager_path(@bank_branch.manager) %>
+</p>
+
+<%= link_to 'Edit', edit_bank_branch_path(@bank_branch) %> |
+<%= link_to 'Back', bank_branches_path %>
