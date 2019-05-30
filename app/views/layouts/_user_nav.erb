@@ -1,0 +1,20 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><strong>CBI</strong></a>
+    </div>
+    <div class="container">
+	    <ul class="nav navbar-nav">
+	      <li><a href="<%= root_path %>" class="<%= current_class?(root_path)%>">Home</a></li>
+	      <li><a href="<%= locker_application_index_path %>">Locker Applications</a></li>
+	      <li><a href="<%= locker_application_index_path %>">Visits Schedule</a></li>
+	      </a></li>
+	    </ul>
+	    <ul class="nav navbar-nav pull-right">
+	      <li><a href="#"><%= current_user&.name&.humanize %></a></li>
+	      <li><a href="#">Notifications</a></li>
+	      <li><%= link_to 'Sign Out', destroy_user_session_path, method: 'delete' %></li>
+	    </ul>
+  </div>
+  </div>
+</nav>

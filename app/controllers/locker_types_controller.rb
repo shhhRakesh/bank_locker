@@ -1,4 +1,5 @@
 class LockerTypesController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_locker_type, only: [:show, :edit, :update, :destroy]
 
   # GET /locker_types

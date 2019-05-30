@@ -1,4 +1,5 @@
 class LockersController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_locker, only: [:show, :edit, :update, :destroy]
 
   # GET /lockers

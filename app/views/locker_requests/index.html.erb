@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-6"><h4>Locker Requests</h4></div>
+  <div class="col-md-6">
+  </div>
+</div>
+<hr>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Request date</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locker_requests.each do |locker_request| %>
+      <tr>
+        <td><%= locker_request.user.email %></td>
+        <td><%= locker_request.request_date %></td>
+        <td><%= locker_request.status.capitalize %></td>
+        <td>
+          <%= link_to 'Approve', update_locker_request_path(id: locker_request.id, status: :approved), class: 'btn btn-default' %>
+          <%= link_to 'Reject', update_locker_request_path(id: locker_request.id, status: :rejected), class: 'btn btn-default' %>
+          <%= link_to 'Awaiting', update_locker_request_path(id: locker_request.id, status: :awaiting), class: 'btn btn-default' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<hr>

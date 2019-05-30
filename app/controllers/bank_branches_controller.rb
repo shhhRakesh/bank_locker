@@ -1,4 +1,5 @@
 class BankBranchesController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_bank_branch, only: [:show, :edit, :update, :destroy]
 
   # GET /bank_branches

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190525130800) do
+ActiveRecord::Schema.define(version: 20190530194202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(version: 20190525130800) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "role"
+    t.bigint "bank_branch_id"
+    t.index ["bank_branch_id"], name: "index_admins_on_bank_branch_id"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -43,6 +47,15 @@ ActiveRecord::Schema.define(version: 20190525130800) do
     t.index ["manager_id"], name: "index_bank_branches_on_manager_id"
   end
 
+  create_table "locker_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.date "request_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.index ["user_id"], name: "index_locker_requests_on_user_id"
+  end
+
   create_table "locker_types", force: :cascade do |t|
     t.string "locker_type"
     t.integer "yearly_rent"
@@ -50,6 +63,15 @@ ActiveRecord::Schema.define(version: 20190525130800) do
     t.integer "extra_visit_charges"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "locker_visit_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "visit_date_time"
+    t.string "visit_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_locker_visit_requests_on_user_id"
   end
 
   create_table "lockers", force: :cascade do |t|
@@ -71,6 +93,15 @@ ActiveRecord::Schema.define(version: 20190525130800) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_lockers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "locker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["locker_id"], name: "index_user_lockers_on_locker_id"
+    t.index ["user_id"], name: "index_user_lockers_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -84,11 +115,21 @@ ActiveRecord::Schema.define(version: 20190525130800) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "customer_id"
+    t.bigint "bank_branch_id"
+    t.index ["bank_branch_id"], name: "index_users_on_bank_branch_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "admins", "bank_branches"
   add_foreign_key "bank_branches", "managers"
+  add_foreign_key "locker_requests", "users"
+  add_foreign_key "locker_visit_requests", "users"
   add_foreign_key "lockers", "bank_branches"
   add_foreign_key "lockers", "locker_types"
+  add_foreign_key "user_lockers", "lockers"
+  add_foreign_key "user_lockers", "users"
+  add_foreign_key "users", "bank_branches"
 end

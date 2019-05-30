@@ -12,10 +12,17 @@
   </head>
 
   <body>
-  	<%= render 'layouts/nav' %>
+    <% if admin_signed_in? %>
+      <%= render 'layouts/admin_nav' %>
+    <% elsif user_signed_in?%>
+      <%= render 'layouts/user_nav' %>
+    <% else %>
+      <%= render 'layouts/nav' %>
+    <% end %>
   	<div class="container">
-	  	<p class="notice"><%= notice %></p>
-	    <p class="alert"><%= alert %></p>
+	  	<% if notice %>
+	    <p class="alert alert-info"><%= notice %></p>
+      <% end -%>
 	    <%= yield %>
   	</div>
 
