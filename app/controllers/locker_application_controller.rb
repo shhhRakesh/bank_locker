@@ -8,10 +8,11 @@ class LockerApplicationController < ApplicationController
   def make_locker_application
     date = Date.today
     locker_application = LockerRequest.new(user_id: current_user.id, request_date: date, status: :pending)
+    # debugger
     if locker_application.save
-        redirect_to locker_requests_url, notice: 'Application was successfully submitted.'
+        redirect_to locker_application_index_path, notice: 'Application was successfully submitted.'
     else
-        redirect_to locker_requests_url, notice: 'Application could not be submitted, Please try again!'
+      redirect_to locker_application_index_path, notice: locker_application.errors.full_messages.first
     end
   end
 
