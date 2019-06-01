@@ -20,11 +20,11 @@
       <tr>
         <td><%= locker_request.user.email %></td>
         <td><%= locker_request.request_date %></td>
-        <td><%= locker_request.status.capitalize %></td>
+        <td><%= locker_request.status&.humanize %></td>
         <td>
-          <%= link_to 'Approve', update_locker_request_path(id: locker_request.id, status: :approved), class: 'btn btn-default' %>
-          <%= link_to 'Reject', update_locker_request_path(id: locker_request.id, status: :rejected), class: 'btn btn-default' %>
-          <%= link_to 'Awaiting', update_locker_request_path(id: locker_request.id, status: :awaiting), class: 'btn btn-default' %>
+          <%= link_to 'Approved', update_locker_request_path(id: locker_request.id, status: :approved), class: "btn btn-default #{locker_request.approved? ? 'disabled' : nil}" %>
+          <%= link_to 'Reject', update_locker_request_path(id: locker_request.id, status: :rejected), class: "btn btn-default #{locker_request.rejected? ? 'disabled' : nil}" %>
+          <%= link_to 'Awaiting', update_locker_request_path(id: locker_request.id, status: :awaiting), class: "btn btn-default #{locker_request.awaiting? ? 'disabled' : nil}" %>
         </td>
       </tr>
     <% end %>

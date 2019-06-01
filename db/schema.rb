@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190531122143) do
+ActiveRecord::Schema.define(version: 20190601105440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20190531122143) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
+    t.bigint "locker_id"
+    t.index ["locker_id"], name: "index_locker_requests_on_locker_id"
     t.index ["user_id"], name: "index_locker_requests_on_user_id"
   end
 
@@ -127,6 +129,7 @@ ActiveRecord::Schema.define(version: 20190531122143) do
 
   add_foreign_key "admins", "bank_branches"
   add_foreign_key "bank_branches", "managers"
+  add_foreign_key "locker_requests", "lockers"
   add_foreign_key "locker_requests", "users"
   add_foreign_key "locker_visit_requests", "users"
   add_foreign_key "lockers", "bank_branches"

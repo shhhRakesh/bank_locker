@@ -19,7 +19,7 @@
       <tr>
         <td><%= locker_visit_request.user.email %></td>
         <td><%= locker_visit_request.visit_date_time.strftime('%m-%d-%Y at: %I:%M%p') %></td>
-        <td><%= locker_visit_request.visit_status.capitalize %></td>
+        <td><%= locker_visit_request.visit_status&.capitalize %></td>
         <td>
           <%= link_to 'Approve', update_visit_request_path(id: locker_visit_request.id, status: :approved), class: 'btn btn-default' %>
           <%= link_to 'Reject', update_visit_request_path(id: locker_visit_request.id, status: :rejected), class: 'btn btn-default' %>

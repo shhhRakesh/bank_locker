@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'request_locker_visit/index'
+  get 'request_locker_visit/index', to: 'request_locker_visit#index', as: 'request_locker_visit'
+  post 'request_locker_visit/index', to: 'request_locker_visit#create_appointment'
 
   get '/customers', to: 'customer_management#index', as: 'customer_list'
   get '/customers/:id/update_status', to: 'customer_management#update_status', as: 'update_customer_status'
